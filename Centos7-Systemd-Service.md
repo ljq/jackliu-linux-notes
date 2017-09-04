@@ -37,7 +37,9 @@ PrivateTmp=True						# 是否分配独立的临时空间（缺省）
 WantedBy=multi-user.target
 ```
 
-EnvironmentFile默认约定引用存放目录一般为：/usr/lib/systemd/system/app-run.service.d/environment.conf（格式：Key=Value）  
+EnvironmentFile默认约定引用存放目录一般为：
+/usr/lib/systemd/system/app-run.service.d/environment.conf
+(格式：Key=Value)  
 
 
 ###### Service服务管理常用操作命令
