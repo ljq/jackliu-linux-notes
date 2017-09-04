@@ -7,7 +7,7 @@
 #### 自定义服务配置管理目录（存放自定义应用注册类服务和第三方服务类配置）：
 /usr/lib/systemd/system/
 
-#### 自定义.service配置文件 (权限：754) 格式（以应用app-run.service为例,考虑作脚本超时处理）：
+#### 自定义.service配置文件 (权限：754) 格式（以应用app-run.service为例, 执行文件作好超时处理！）：
 
 ```
 [Unit]
@@ -21,6 +21,8 @@ Environment="GOPATH=/usr/local/go"                      # 环境变量设置，�
 ExecStart=/data/auto_run.sh start			# 启动脚本（Service配置全部使用绝对路径，第三方包脚本内命令使用绝对的路径格式）
 ExecReload=/data/auto_run.sh reload                     # 重新加载（缺省）
 ExecStop=/data/auto_run.sh stop                         # 停止服务（缺省）
+DefaultTimeoutStartSec=30                               # 服务启动允许的最大时长，超时时间（默认无单位秒）  
+                                                        #     单位："ms"(毫秒), "s"(秒), "min"(分钟), "h"(小时), "d"(天), "w"(周)  
 PrivateTmp=True						# 是否分配独立的临时空间（缺省）								
 
 [Install]
