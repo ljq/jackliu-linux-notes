@@ -52,5 +52,4 @@ WantedBy=multi-user.target
 查看已启动的服务列表：systemctl list-unit-files|grep enabled  
 ```
 
-###### 
-：服务无法执行检查SElinux是否开启，自行关闭SElinux。
+###### 注意：服务无法执行检查SElinux是否开启，自行关闭SElinux。
