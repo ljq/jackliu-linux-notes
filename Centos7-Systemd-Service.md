@@ -28,7 +28,7 @@ ExecStart=/data/auto_run.sh start			# 调用启动可执行文件：
                                                         #         可执行文件内命令用绝对的路径格式）  
 ExecReload=/data/auto_run.sh reload                     # 重新加载（缺省）
 ExecStop=/data/auto_run.sh stop                         # 停止服务（缺省）
-DefaultTimeoutStartSec=30                               # 服务启动允许的最大时长，超时时间（默认无单位秒）  
+DefaultTimeoutStartSec=30                               # 服务启动允许的最大时长，超时时间（默认无单位:秒）  
                                                         #     单位："ms"(毫秒), "s"(秒), "min"(分钟),
                                                         #           "h"(小时), "d"(天), "w"(周)  
 PrivateTmp=True						# 是否分配独立的临时空间（缺省）								
