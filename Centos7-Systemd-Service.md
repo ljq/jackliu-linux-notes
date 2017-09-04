@@ -13,7 +13,7 @@
 [Unit]
 Description="app-run@Author Jack Liu Process Daemon" 	# 服务描述
 After=rc-local.service					# 服务类别：  
-                                #       例启动顺序(默认在rc-local.service之后调用执行)  
+                                                        #       例启动顺序(默认在rc-local.service之后调用执行)  
 
 [Service]
 Type=forking						# 优先使用forking方式:
