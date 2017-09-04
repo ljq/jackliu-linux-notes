@@ -1,13 +1,13 @@
-# Centos7-Systemd-Service自定义编写Service应用服务配置说明整理
+### Centos7-Systemd-Service自定义编写Service应用服务配置说明整理
 
 
-#### 系统基本service服务配置目录（此目录勿动，一般情况下只放系统核心基础服务配置，否存放应用注册类服务配置）：
+###### 系统基本service服务配置目录（此目录勿动，一般情况下只放系统核心基础服务配置，否存放应用注册类服务配置）：
 /etc/systemd/system
 
-#### 自定义服务配置管理目录（存放自定义应用注册类服务和第三方服务类配置）：
+###### 自定义服务配置管理目录（存放自定义应用注册类服务和第三方服务类配置）：
 /usr/lib/systemd/system/
 
-#### 自定义.service配置文件 (权限：754) 格式（以应用app-run.service为例, 执行文件作好超时处理！）：
+###### 自定义.service配置文件 (权限：754) 格式（以应用app-run.service为例, 执行文件作好超时处理！）：
 
 ```
 [Unit]
@@ -37,10 +37,10 @@ PrivateTmp=True						# 是否分配独立的临时空间（缺省）
 WantedBy=multi-user.target
 ```
 
-###### EnvironmentFile默认约定引用存放目录一般为：/usr/lib/systemd/system/app-run.service.d/environment.conf（格式：Key=Value）
+EnvironmentFile默认约定引用存放目录一般为：/usr/lib/systemd/system/app-run.service.d/environment.conf（格式：Key=Value）  
 
 
-#### Service服务管理常用操作命令
+###### Service服务管理常用操作命令
 ```
 在开机时启用一个服务：systemctl enable app-run.service  
 在开机时禁用一个服务：systemctl disable app-run.service
@@ -52,4 +52,4 @@ WantedBy=multi-user.target
 查看已启动的服务列表：systemctl list-unit-files|grep enabled  
 ```
 
-###### 注意：服务无法执行检查SElinux是否开启，自行关闭SElinux。
+注意：服务无法执行检查SElinux是否开启，自行关闭SElinux。  
