@@ -1,4 +1,4 @@
-# Centos7-Systemd-Service自定义服务配置说明整理
+# Centos7-Systemd-Service自定义编写Service应用服务配置说明整理
 
 
 #### 系统基本service服务配置目录（此目录勿动，一般情况下只放系统核心基础服务配置，否存放应用注册类服务配置）：
