@@ -31,8 +31,8 @@ ftp.xml
 ganglia-client.xml  
 ganglia-master.xml  
 high-availability.xml  
-__<font color=red>https.xml</font>__  
-__<font color=red>http.xml</font>__  
+__<span style="color:red;">https.xml</span>__  
+__<span style="color:red;">http.xml</span>__  
 imaps.xml  
 imap.xml  
 ipp-client.xml  
@@ -93,7 +93,7 @@ snmptrap.xml
 snmp.xml  
 spideroak-lansync.xml  
 squid.xml  
-__<font color=red>ssh.xml</font>__  
+__<span style="color:red;">ssh.xml</span>__  
 synergy.xml  
 syslog-tls.xml  
 syslog.xml  
