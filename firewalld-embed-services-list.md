@@ -1,4 +1,4 @@
-### /usr/lib/firewalld/services
+### /usr/lib/firewalld/services 
 
 
 amanda-client.xml  
@@ -108,3 +108,17 @@ xmpp-bosh.xml
 xmpp-client.xml  
 xmpp-local.xml  
 xmpp-server.xml  
+
+___
+
+#### ssh.xml:  
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>SSH</short>
+  <description>Secure Shell (SSH) is a protocol for logging into and executing commands on remote machines. It provides secure encrypted communications. If you plan on accessing your machine remotely via SSH over a firewalled interface, enable this option. You need the openssh-server package installed for this option to be useful.</description>
+  <port protocol="tcp" port="22"/>
+</service>
+
+```
