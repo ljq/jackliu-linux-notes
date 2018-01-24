@@ -1,6 +1,6 @@
 ### firewalld services 防火墙内嵌服务
 
-#### os path: /usr/lib/firewalld/services 
+####  Configuration file path: /usr/lib/firewalld/services 
 
 
 amanda-client.xml  
