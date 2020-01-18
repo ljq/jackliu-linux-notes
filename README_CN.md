@@ -2,7 +2,7 @@
 Jack Liu's Linux Notes
 
 
-# Documents
+# Documents Path
 
 [zh_CN](https://github.com/iotd/linux-note)
 
