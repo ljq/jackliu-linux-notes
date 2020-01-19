@@ -4,7 +4,7 @@ Jack Liu's Linux Notes
 
 # Documents
 
-[EN doc](https://github.com/iotd/linux-note/tree/master/EN)
+[EN Doc](https://github.com/iotd/linux-note/tree/master/EN)
 
-[zh_CN doc 中文文档](https://github.com/iotd/linux-note/tree/master/zh_CN)
+[zh_CN Doc 中文文档](https://github.com/iotd/linux-note/tree/master/zh_CN)
 
