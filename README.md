@@ -4,7 +4,7 @@ Jack Liu's Linux Notes
 
 # Documents
 
-[README.md](https://github.com/iotd/linux-note/tree/master/EN)
+[EN doc](https://github.com/iotd/linux-note/tree/master/EN)
 
-[README_CN.md 中文文档](https://github.com/iotd/linux-note/tree/master/zh_CN)
+[zh_CN doc 中文文档](https://github.com/iotd/linux-note/tree/master/zh_CN)
 
