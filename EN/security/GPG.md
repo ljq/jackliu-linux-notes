@@ -38,3 +38,11 @@ $ GPG --output new file name --decrypt encrypted file name
 $ GPG --edit-key identifier name
 
 ` ` `
+
+### Backup of public and private keys of GPG 
+
+* backup public key: ```gpg-o keyfilename --export KeyID``` if there is no KeyID is the backup of all public keys, -o represents the output to the file keyfilename, if plus -a parameters output text format information, otherwise output is binary format information.
+
+* backup private key: ```gpg-o keyfilename --export-secret-keys KeyID``` backup all private keys if there is no KeyID, -o represents the output to the file keyfilename, if plus -a parameters output text format information, otherwise output is binary format information.
+
+* import key information: ```GPG --import filename```
