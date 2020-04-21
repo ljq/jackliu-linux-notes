@@ -9,25 +9,25 @@
 # Remove unnecessary system users and groups
 
 # Remove unnecessary users
-Userdel adm
-Userdel lp
-Userdel sync
-Userdel shutdown
-Userdel the halt
-Userdel news
-Userdel uucp
-Userdel operator
-Userdel games
-Userdel gopher
-Userdel ftp
+userdel adm
+userdel lp
+userdel sync
+userdel shutdown
+userdel the halt
+userdel news
+userdel uucp
+userdel operator
+userdel games
+userdel gopher
+userdel ftp
 
 # Remove unnecessary groups
-Groupdel adm
-Groupdel lp
-Groupdel news
-Groupdel uucp
-Groupdel games
-Groupdel dip
-Groupdel pppusers
-Groupdel popusers
-Groupdel slipusers
+groupdel adm
+groupdel lp
+groupdel news
+groupdel uucp
+groupdel games
+groupdel dip
+groupdel pppusers
+groupdel popusers
+groupdel slipusers
