@@ -12,11 +12,15 @@
 ```
 [Unit]
 Description="app-run@Author Jack Liu Process Daemon" 	# 服务描述
+Documentation="app.txt"                               # 文档描述
 After=rc-local.service					# 服务类别：  
                                                         #       例启动顺序(默认在rc-local.service之后调用执行)  
 
 [Service]
-Type=forking						# 优先使用forking方式:
+Type=forking						                                      # 优先使用forking方式:
+#BusName=                                               # 注意：设置与此服务通讯所使用的D-Bus名称,如果Type=dbus,则必须设置此项
+User=root
+Group=root
                                                         #       (遵循传统Unix做法,设置PIDFile=选项
                                                         #        帮助systemd准确定位该服务的主进程)
 PIDFile=/var/run/app-run.pid				# 设置应用进程的PID（缺省）
