@@ -3,8 +3,8 @@ Jack Liu's Linux Notes
 
 # Documents
 
-[EN Doc](https://github.com/ljq/linux-note/tree/master/EN)
+[EN Doc](EN)
 
-[zh_CN Doc 中文文档](https://github.com/ljq/linux-note/tree/master/zh_CN)
+[zh-CN Doc 中文文档](README.zh-CN.md)
 
 
