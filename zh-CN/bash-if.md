@@ -1,3 +1,4 @@
+```
 [ -a ${file} ]  如果 ${file} 存在则为真。  
 [ -b ${file} ]  如果 ${file} 存在且是一个块特殊文件则为真。  
 [ -c ${file} ]  如果 ${file} 存在且是一个字特殊文件则为真。  
@@ -29,3 +30,4 @@
 [ STRING1 < STRING2 ]  如果 "STRING1" sorts before "STRING2" lexicographically in the current locale则为真。  
 [ STRING1 > STRING2 ]  如果 "STRING1" sorts after "STRING2" lexicographically in the current locale则为真。  
 [ ARG1 OP ARG2 ] "OP" is one of -eq, -ne, -lt, -le, -gt or -ge. These arithmetic binary operators return true if "ARG1" is equal to, not equal to, less than, less than or equal to, greater than, or greater than or equal to "ARG2", respectively. "ARG1" and "ARG2" are integers.
+```
