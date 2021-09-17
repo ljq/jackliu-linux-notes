@@ -1,3 +1,4 @@
+```
 [-a ${file}] True if ${file} exists.
 [-b ${file}] True if ${file} exists and is a block-specific file.
 [-c ${file}] True if ${file} exists and is a word special file.
@@ -29,3 +30,4 @@ ${file}1 -ot ${file}2 -ot ${file}2 -ot ${file}2 -ot ${file}2 -ot ${file}2
 [STRING1 < STRING2] Is true if "STRING1" sorts before "STRING2" lexicographically in the current locale.
 [STRING1 > STRING2] True if "STRING1" sorts after "STRING2" lexicographically in the current locale.
 [ ARG1 OP ARG2 ] "OP" is one of -eq, -ne, -lt, -le, -gt or -ge. These arithmetic binary operators return true if "ARG1" is equal to, not equal to, less than, less than or equal to, greater than, or greater than or equal to "ARG2", respectively. "ARG1" and "ARG2" are integers.
+```
