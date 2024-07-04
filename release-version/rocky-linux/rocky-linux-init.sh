@@ -91,7 +91,7 @@ main() {
     list_tools
     check_installed
 
-    read -p "Enter the numbers of the tools you want to install (comma-separated, 0 to quit): " input
+    read -p "Enter the numbers of the tools you want to install (support comma separated multiple digits,  quit): " input
     while [[ $input != "quit" ]]; do
         IFS=',' read -ra choices <<< "$input"
         valid_choice=true
@@ -116,7 +116,7 @@ main() {
         fi
 
         check_installed
-        read -p "Enter the numbers of the tools you want to install (Support comma separated multiple digits,  quit): " input
+        read -p "Enter the numbers of the tools you want to install (support comma separated multiple digits,  quit): " input
     done
 
     echo "Quit."
