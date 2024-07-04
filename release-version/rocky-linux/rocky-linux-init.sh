@@ -18,8 +18,8 @@ get_system_version() {
 tools=(
     "vim"          # 0
     "ping"         # 1
-    "netstat"      # 2
-    "htop"         # 3
+    "net-tools"    # 2
+    "firewalld"    # 3
     "tar"          # 4
     "gzip"         # 5
     "bzip2"        # 6
@@ -28,7 +28,6 @@ tools=(
     "python 3"     # 9
     "git"          # 10
     "ncurses"      # 11
-    "firewalld"    # 12
 )
 
 # Function to list tools with numbers
@@ -52,6 +51,10 @@ check_installed() {
         tool_name="${tools[$index]}"
         if [[ $tool_name == "python 3" ]]; then
             python3 --version >/dev/null 2>&1
+        elif [[ $tool_name == "ncurses" ]]; then
+            clear -V >/dev/null 2>&1
+        elif [[ $tool_name == "net-tools" ]]; then
+            netstat --version >/dev/null 2>&1
         else
             command -v "${tool_name}" >/dev/null 2>&1
         fi
@@ -64,15 +67,6 @@ check_installed() {
         fi
     done
 
-    echo
-    echo "=== Not Installed Tools ==="
-    echo "Not installed tools:"
-
-    for index in "${not_installed[@]}"; do
-        echo "[${index}] ${tools[$index]}"  # Display tool name with correct index
-    done
-
-    echo
 }
 
 # Function to install selected tool
@@ -98,7 +92,7 @@ main() {
     check_installed
 
     read -p "Enter the numbers of the tools you want to install (comma-separated, 0 to quit): " input
-    while [[ $input != "0" ]]; do
+    while [[ $input != "quit" ]]; do
         IFS=',' read -ra choices <<< "$input"
         valid_choice=true
 
@@ -122,7 +116,7 @@ main() {
         fi
 
         check_installed
-        read -p "Enter the numbers of the tools you want to install (Support comma separated multiple digits, 0 to quit): " input
+        read -p "Enter the numbers of the tools you want to install (Support comma separated multiple digits,  quit): " input
     done
 
     echo "Quit."
