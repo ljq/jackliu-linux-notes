@@ -28,6 +28,7 @@ tools=(
     "python 3"     # 9
     "git"          # 10
     "ncurses"      # 11
+    "firewalld"    # 12
 )
 
 # Function to list tools with numbers
