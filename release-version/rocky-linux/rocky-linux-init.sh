@@ -26,6 +26,8 @@ tools=(
     "wget"         # 7
     "curl"         # 8
     "python 3"     # 9
+    "git"          # 10
+    "ncurses"      # 11
 )
 
 # Function to list tools with numbers
