@@ -1,18 +1,11 @@
 #!/bin/bash
-# Description: A script to check system version and installed tools on Rocky Linux.
+# Description: A script to check system version and install tools on Rocky Linux.
 # Author: Jackliu (ljq@GitHub)
 # Usage: ./rocky-linux-init.sh
-# Version: 1.0
+# Version: 1.1
 # Date: 2023-07-04
 # License: MIT
 # Page Site: https://github.com/ljq
-
-# Function to get system version
-get_system_version() {
-    echo "=== System Version ==="
-    cat /etc/*release | grep PRETTY_NAME | cut -d'"' -f2
-    echo
-}
 
 # Define tools list in lowercase
 tools=(
@@ -25,7 +18,7 @@ tools=(
     "bzip2"        # 6
     "wget"         # 7
     "curl"         # 8
-    "python 3"     # 9
+    "python3"      # 9
     "git"          # 10
     "ncurses"      # 11
 )
@@ -49,6 +42,7 @@ check_installed() {
 
     for index in "${!tools[@]}"; do
         tool_name="${tools[$index]}"
+
         if [[ $tool_name == "python 3" ]]; then
             python3 --version >/dev/null 2>&1
         elif [[ $tool_name == "ncurses" ]]; then
@@ -67,6 +61,14 @@ check_installed() {
         fi
     done
 
+    if [[ ${#not_installed[@]} -gt 0 ]]; then
+        echo -e "\n=== Tools Not Installed ==="
+        for index in "${not_installed[@]}"; do
+            tool_name="${tools[$index]}"
+            echo -e "\033[0;31m[${index}] ${tool_name}\033[0m"  # Print in red color
+        done
+    fi
+    echo
 }
 
 # Function to install selected tool
@@ -75,48 +77,58 @@ install_tool() {
     local tool_name="${tools[$tool_index]}"
 
     echo "Installing ${tool_name}..."
-    if [[ "${tool_name}" == "python 3" ]]; then
-        sudo dnf install -y python3
-    else
-        sudo dnf install -y "${tool_name}"
-    fi
-    
+    sudo dnf install -y "${tool_name}"
     echo "${tool_name} installed successfully."
     echo
 }
 
+# Function to handle user input for installation
+handle_install_input() {
+    local input="$1"
+    local valid_choices=()
+
+    if [[ "$input" == "all" ]]; then
+        valid_choices=("${!tools[@]}")
+    else
+        IFS=',' read -ra choices <<< "$input"
+        for choice in "${choices[@]}"; do
+            if [[ $choice =~ ^[0-9]+$ ]]; then
+                valid_choices+=("$choice")
+            elif [[ $choice =~ ^[0-9]+-[0-9]+$ ]]; then
+                range_start=$(echo "$choice" | cut -d'-' -f1)
+                range_end=$(echo "$choice" | cut -d'-' -f2)
+                if [[ $range_start -le $range_end && $range_start -ge 0 && $range_end -lt ${#tools[@]} ]]; then
+                    for ((i=$range_start; i<=$range_end; i++)); do
+                        valid_choices+=("$i")
+                    done
+                fi
+            fi
+        done
+    fi
+
+    if [[ ${#valid_choices[@]} -eq 0 ]]; then
+        echo "Invalid input. Please enter valid tool numbers or 'all'."
+        return 1
+    fi
+
+    for choice in "${valid_choices[@]}"; do
+        install_tool "$choice"
+    done
+    return 0
+}
+
 # Main function
 main() {
-    get_system_version
     list_tools
     check_installed
 
-    read -p "Enter the numbers of the tools you want to install (support comma separated multiple digits,  quit): " input
+    read -p "Enter the numbers of the tools you want to install (e.g., 1,2,5 or 1-3 or all, 'quit' to exit): " input
     while [[ $input != "quit" ]]; do
-        IFS=',' read -ra choices <<< "$input"
-        valid_choice=true
-
-        for choice in "${choices[@]}"; do
-            choice=$(echo "$choice" | tr -d ' ')  # Remove any spaces
-            if [[ ! $choice =~ ^[0-9]+$ || $choice -ge ${#tools[@]} || $choice -lt 0 ]]; then
-                echo "Invalid choice: $choice. Please enter valid tool numbers."
-                valid_choice=false
-                break
-            fi
-        done
-
-        if [[ $valid_choice == true ]]; then
-            for choice in "${choices[@]}"; do
-                if [[ $choice -ne 0 ]]; then
-                    install_tool "$choice"
-                else
-                    break
-                fi
-            done
+        handle_install_input "$input"
+        if [[ $? -eq 0 ]]; then
+            check_installed
         fi
-
-        check_installed
-        read -p "Enter the numbers of the tools you want to install (support comma separated multiple digits,  quit): " input
+        read -p "Enter the numbers of the tools you want to install (e.g., 1,2,5 or 1-3 or all, 'quit' to exit): " input
     done
 
     echo "Quit."
